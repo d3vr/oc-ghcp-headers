@@ -1,6 +1,6 @@
 {
   "name": "oc-ghcp-headers",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "OpenCode plugin that customizes GitHub Copilot x-initiator headers",
   "type": "module",
   "main": "index.ts",

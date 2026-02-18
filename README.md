@@ -72,11 +72,11 @@ Configure percentages in `opencode.json` / `opencode.jsonc` under `provider.gith
 
 ## Debug Log
 
-- Log file: `/tmp/opencode-copilot-agent-header-debug.log`
+- Log file: `/tmp/oc-ghcp-headers-debug.log`
 - Watch live:
 
 ```bash
-tail -f /tmp/opencode-copilot-agent-header-debug.log
+tail -f /tmp/oc-ghcp-headers-debug.log
 ```
 
 ## Maintainer Docs

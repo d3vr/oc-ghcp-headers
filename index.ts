@@ -2,7 +2,7 @@ import type { Plugin } from "@opencode-ai/plugin"
 import { appendFileSync } from "fs"
 
 const DEBUG_ENABLED = true
-const DEBUG_LOG = "/tmp/opencode-copilot-agent-header-debug.log"
+const DEBUG_LOG = "/tmp/oc-ghcp-headers-debug.log"
 const MESSAGE_LOOKBACK_LIMIT = 10
 const DEFAULT_FIRST_MESSAGE_AGENT_PERCENT = 0
 const DEFAULT_FOLLOWUP_MESSAGE_AGENT_PERCENT = 100
@@ -102,7 +102,7 @@ async function loadSessionMessages(client: any, sessionID: string, directory: st
 }
 
 const CopilotForceAgentHeader: Plugin = async ({ client, directory }: any) => {
-  log("[INIT] Copilot Force Agent Header plugin loaded (chat.headers mode)")
+  log("[INIT] oc-ghcp-headers plugin loaded (chat.headers mode)")
 
   return {
     "chat.headers": async (incoming: any, output: any) => {
