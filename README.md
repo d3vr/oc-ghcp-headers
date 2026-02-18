@@ -19,17 +19,29 @@ If session history cannot be loaded, it fails closed to `agent`.
 
 ## Setup
 
-Install from npm:
+You can use this plugin in two ways.
 
-```bash
-bun add oc-ghcp-headers
-```
-
-Then enable it in `~/.config/opencode/opencode.jsonc`:
+Option 1 (npm package):
 
 ```json
 {
   "plugin": ["oc-ghcp-headers"]
+}
+```
+
+OpenCode auto-installs npm plugins referenced in `plugin` entries.
+
+Option 2 (local clone):
+
+```bash
+git clone https://github.com/d3vr/oc-ghcp-headers ~/.config/opencode/plugin/oc-ghcp-headers
+```
+
+Then point your config to the local plugin directory:
+
+```json
+{
+  "plugin": ["./plugin/oc-ghcp-headers"]
 }
 ```
 
