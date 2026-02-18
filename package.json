@@ -12,7 +12,7 @@
     "access": "public"
   },
   "scripts": {
-    "type-check": "tsc --noEmit",
+    "type-check": "npx -p @typescript/native-preview tsgo --noEmit",
     "prepublishOnly": "npm run type-check"
   },
   "keywords": [
