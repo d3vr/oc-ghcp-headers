@@ -33,7 +33,11 @@ function getPercent(value: unknown, fallback: number) {
 
 function sampleInitiator(agentPercent: number) {
   const randomPercent = Math.random() * 100
-  return randomPercent < agentPercent ? "agent" : "user"
+  return {
+    initiator: randomPercent < agentPercent ? "agent" : "user",
+    randomPercent,
+    thresholdPercent: agentPercent,
+  }
 }
 
 function hasAssistantOrToolMessages(messages: any[]) {
@@ -138,18 +142,37 @@ const CopilotForceAgentHeader: Plugin = async ({ client, directory }: any) => {
       }
 
       let initiator = "agent"
+      let mode = "history-unavailable"
+      let randomPercent: number | undefined
+      let thresholdPercent: number | undefined
 
       if (!loadedHistory) {
         initiator = "agent"
       } else if (isNonFirstMessage) {
-        initiator = sampleInitiator(followupMessageAgentPercent)
+        mode = "followup"
+        const sampled = sampleInitiator(followupMessageAgentPercent)
+        initiator = sampled.initiator
+        randomPercent = sampled.randomPercent
+        thresholdPercent = sampled.thresholdPercent
       } else {
-        initiator = sampleInitiator(firstMessageAgentPercent)
+        mode = "first"
+        const sampled = sampleInitiator(firstMessageAgentPercent)
+        initiator = sampled.initiator
+        randomPercent = sampled.randomPercent
+        thresholdPercent = sampled.thresholdPercent
       }
 
       output.headers ||= {}
       output.headers["x-initiator"] = initiator
-      log(`[HEADERS] x-initiator=${initiator}`)
+      if (typeof randomPercent === "number" && typeof thresholdPercent === "number") {
+        log(
+          `[HEADERS] mode=${mode} x-initiator=${initiator} random=${randomPercent.toFixed(2)} threshold=${thresholdPercent.toFixed(2)} firstAgentPercent=${firstMessageAgentPercent.toFixed(2)} followupAgentPercent=${followupMessageAgentPercent.toFixed(2)}`,
+        )
+      } else {
+        log(
+          `[HEADERS] mode=${mode} x-initiator=${initiator} firstAgentPercent=${firstMessageAgentPercent.toFixed(2)} followupAgentPercent=${followupMessageAgentPercent.toFixed(2)}`,
+        )
+      }
     },
   }
 }
