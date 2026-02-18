@@ -1,17 +1,25 @@
 {
-  "name": "copilot-force-agent-header",
-  "version": "1.0.0",
-  "description": "OpenCode plugin that configures GitHub Copilot X-Initiator header behavior with randomization for first messages",
+  "name": "oc-ghcp-headers",
+  "version": "0.1.0",
+  "description": "OpenCode plugin that customizes GitHub Copilot x-initiator headers",
   "type": "module",
   "main": "index.ts",
+  "files": [
+    "index.ts",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "prepublishOnly": "npm run type-check"
   },
   "keywords": [
     "opencode",
     "plugin",
     "github-copilot",
-    "header-modification"
+    "x-initiator"
   ],
   "author": "",
   "license": "MIT",

@@ -1,4 +1,4 @@
-# Copilot Force Agent Header Plugin
+# oc-ghcp-headers
 
 This plugin controls the `x-initiator` header for GitHub Copilot requests in OpenCode.
 
@@ -14,16 +14,21 @@ If session history cannot be loaded, it fails closed to `agent`.
 
 ## Setup
 
-1. Put this plugin in your OpenCode plugin directory (for example `~/.config/opencode/plugin/copilot-force-agent-header`).
-2. Enable it in `~/.config/opencode/opencode.jsonc`:
+Install from npm:
+
+```bash
+bun add oc-ghcp-headers
+```
+
+Then enable it in `~/.config/opencode/opencode.jsonc`:
 
 ```json
 {
-  "plugin": ["./plugin/copilot-force-agent-header"]
+  "plugin": ["oc-ghcp-headers"]
 }
 ```
 
-3. Restart OpenCode.
+Restart OpenCode after updating config.
 
 ## Configuration
 
@@ -68,6 +73,10 @@ Configure percentages in `opencode.json` / `opencode.jsonc` under `provider.gith
 ```bash
 tail -f /tmp/opencode-copilot-agent-header-debug.log
 ```
+
+## Maintainer Docs
+
+- Publishing and release process: `docs/release.md`
 
 ## Credits
 
