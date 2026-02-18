@@ -1,5 +1,10 @@
 # oc-ghcp-headers
 
+> [!WARNING]
+> This is experimental software provided as-is. Use it at your own risk.
+> Modifying request behavior may lead to degraded service, policy enforcement, or account-level actions.
+> The authors and contributors are not responsible for any resulting account issues, restrictions, or losses.
+
 This plugin controls the `x-initiator` header for GitHub Copilot requests in OpenCode.
 
 ## Behavior
@@ -77,6 +82,10 @@ tail -f /tmp/opencode-copilot-agent-header-debug.log
 ## Maintainer Docs
 
 - Publishing and release process: `docs/release.md`
+
+## License
+
+- MIT. See `LICENSE`.
 
 ## Credits
 
